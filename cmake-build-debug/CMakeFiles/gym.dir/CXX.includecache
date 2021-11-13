@@ -46,6 +46,14 @@ C:/Users/amiel/CLionProjects/gym/include/Workout.h
 string
 -
 
+C:/Users/amiel/CLionProjects/gym/src/Action.cpp
+../include/Action.h
+C:/Users/amiel/CLionProjects/gym/include/Action.h
+
+C:/Users/amiel/CLionProjects/gym/src/Customer.cpp
+../include/Customer.h
+C:/Users/amiel/CLionProjects/gym/include/Customer.h
+
 C:/Users/amiel/CLionProjects/gym/src/Studio.cpp
 ../include/Studio.h
 C:/Users/amiel/CLionProjects/gym/include/Studio.h
@@ -53,6 +61,20 @@ C:/Users/amiel/CLionProjects/gym/include/Studio.h
 C:/Users/amiel/CLionProjects/gym/include/Workout.h
 fstream
 -
+iostream
+-
+
+C:/Users/amiel/CLionProjects/gym/src/Trainer.cpp
+../include/Trainer.h
+C:/Users/amiel/CLionProjects/gym/include/Trainer.h
+
+C:/Users/amiel/CLionProjects/gym/src/Workout.cpp
+../include/Workout.h
+C:/Users/amiel/CLionProjects/gym/include/Workout.h
+
+C:/Users/amiel/CLionProjects/gym/src/main.cpp
+../include/Studio.h
+C:/Users/amiel/CLionProjects/gym/include/Studio.h
 iostream
 -
 

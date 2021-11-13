@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/gym.dir/src/Action.cpp.obj"
   "CMakeFiles/gym.dir/src/Customer.cpp.obj"
   "CMakeFiles/gym.dir/src/Studio.cpp.obj"
+  "CMakeFiles/gym.dir/src/Trainer.cpp.obj"
   "CMakeFiles/gym.dir/src/Workout.cpp.obj"
   "CMakeFiles/gym.dir/src/main.cpp.obj"
   "gym.exe"

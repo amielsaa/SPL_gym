@@ -3,4 +3,4 @@ project(gym)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(gym src/main.cpp src/Customer.cpp src/Studio.cpp src/Action.cpp src/Workout.cpp)
+add_executable(gym src/main.cpp src/Customer.cpp src/Studio.cpp src/Action.cpp src/Workout.cpp src/Trainer.cpp)

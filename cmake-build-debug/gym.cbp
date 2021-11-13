@@ -93,6 +93,9 @@
 		<Unit filename="C:/Users/amiel/CLionProjects/gym/src/Studio.cpp">
 			<Option target="gym"/>
 		</Unit>
+		<Unit filename="C:/Users/amiel/CLionProjects/gym/src/Trainer.cpp">
+			<Option target="gym"/>
+		</Unit>
 		<Unit filename="C:/Users/amiel/CLionProjects/gym/src/Workout.cpp">
 			<Option target="gym"/>
 		</Unit>

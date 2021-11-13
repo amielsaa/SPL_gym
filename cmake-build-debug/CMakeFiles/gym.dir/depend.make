@@ -17,6 +17,11 @@ CMakeFiles\gym.dir\src\Studio.cpp.obj: ..\include\Trainer.h
 CMakeFiles\gym.dir\src\Studio.cpp.obj: ..\include\Workout.h
 CMakeFiles\gym.dir\src\Studio.cpp.obj: ..\src\Studio.cpp
 
+CMakeFiles\gym.dir\src\Trainer.cpp.obj: ..\include\Customer.h
+CMakeFiles\gym.dir\src\Trainer.cpp.obj: ..\include\Trainer.h
+CMakeFiles\gym.dir\src\Trainer.cpp.obj: ..\include\Workout.h
+CMakeFiles\gym.dir\src\Trainer.cpp.obj: ..\src\Trainer.cpp
+
 CMakeFiles\gym.dir\src\Workout.cpp.obj: ..\include\Workout.h
 CMakeFiles\gym.dir\src\Workout.cpp.obj: ..\src\Workout.cpp
 

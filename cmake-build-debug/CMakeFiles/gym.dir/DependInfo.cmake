@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/amiel/CLionProjects/gym/src/Action.cpp" "C:/Users/amiel/CLionProjects/gym/cmake-build-debug/CMakeFiles/gym.dir/src/Action.cpp.obj"
   "C:/Users/amiel/CLionProjects/gym/src/Customer.cpp" "C:/Users/amiel/CLionProjects/gym/cmake-build-debug/CMakeFiles/gym.dir/src/Customer.cpp.obj"
   "C:/Users/amiel/CLionProjects/gym/src/Studio.cpp" "C:/Users/amiel/CLionProjects/gym/cmake-build-debug/CMakeFiles/gym.dir/src/Studio.cpp.obj"
+  "C:/Users/amiel/CLionProjects/gym/src/Trainer.cpp" "C:/Users/amiel/CLionProjects/gym/cmake-build-debug/CMakeFiles/gym.dir/src/Trainer.cpp.obj"
   "C:/Users/amiel/CLionProjects/gym/src/Workout.cpp" "C:/Users/amiel/CLionProjects/gym/cmake-build-debug/CMakeFiles/gym.dir/src/Workout.cpp.obj"
   "C:/Users/amiel/CLionProjects/gym/src/main.cpp" "C:/Users/amiel/CLionProjects/gym/cmake-build-debug/CMakeFiles/gym.dir/src/main.cpp.obj"
   )

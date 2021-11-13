@@ -190,6 +190,30 @@ src\Studio.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\gym.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gym.dir\src\Studio.cpp.s
 .PHONY : src\Studio.cpp.s
 
+src\Trainer.obj: src\Trainer.cpp.obj
+.PHONY : src\Trainer.obj
+
+# target to build an object file
+src\Trainer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gym.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gym.dir\src\Trainer.cpp.obj
+.PHONY : src\Trainer.cpp.obj
+
+src\Trainer.i: src\Trainer.cpp.i
+.PHONY : src\Trainer.i
+
+# target to preprocess a source file
+src\Trainer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gym.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gym.dir\src\Trainer.cpp.i
+.PHONY : src\Trainer.cpp.i
+
+src\Trainer.s: src\Trainer.cpp.s
+.PHONY : src\Trainer.s
+
+# target to generate assembly for a file
+src\Trainer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gym.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gym.dir\src\Trainer.cpp.s
+.PHONY : src\Trainer.cpp.s
+
 src\Workout.obj: src\Workout.cpp.obj
 .PHONY : src\Workout.obj
 
@@ -256,6 +280,9 @@ help:
 	@echo ... src/Studio.obj
 	@echo ... src/Studio.i
 	@echo ... src/Studio.s
+	@echo ... src/Trainer.obj
+	@echo ... src/Trainer.i
+	@echo ... src/Trainer.s
 	@echo ... src/Workout.obj
 	@echo ... src/Workout.i
 	@echo ... src/Workout.s
