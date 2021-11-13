@@ -29,8 +29,12 @@ Studio::Studio(const std::string &configFilePath) {
     for(int i=2;i<fileContent.size();i++) {
         vector<string> workouts = workoutSplitter(fileContent[i]);
         cout<<workouts[0] +" " << getWorkoutTypeByString(workouts[1]) << " " + workouts[2] <<endl;
-        //workout_options.push_back(Workout(i-2,workouts[0],stoi(workouts[2]), getWorkoutTypeByString(workouts[1])));
+        workout_options.push_back(Workout(i-2,workouts[0],stoi(workouts[2]), getWorkoutTypeByString(workouts[1])));
     }
+}
+
+std::vector<Workout>& Studio::getWorkoutOptions() {
+    return workout_options;
 }
 
 int Studio::getNumOfTrainers() const {
@@ -63,16 +67,19 @@ vector<string> Studio::workoutSplitter(string workoutContent) {
     vector<string> ret;
     string temp;
     for(int i=0; i<workoutContent.size(); i++){
-        if(workoutContent[i] != ',' & workoutContent[i] != ' ') {
+        if(workoutContent[i] != ','){
             temp+=workoutContent[i];
-        } else if((i+1<workoutContent.size() && workoutContent[i+1] != ',' && workoutContent[i+1] != ' ') ){
-            ret.push_back(temp);
-            temp = "";
+            if(i==workoutContent.size()-1)
+                ret.push_back(temp);
         }
-        if(workoutContent.size()-1 == i){
+        else{
             ret.push_back(temp);
+            temp="";
+            while(i<workoutContent.size() && (workoutContent[i] == ',' | workoutContent[i] == ' ') ){
+                i++;
+            }
+            i--;
         }
-
     }
     return ret;
 }
