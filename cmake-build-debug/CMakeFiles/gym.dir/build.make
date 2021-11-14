@@ -33,19 +33,19 @@ NULL=nul
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "D:\CLion\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "D:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "D:\CLion\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "D:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\amiel\CLionProjects\gym
+CMAKE_SOURCE_DIR = C:\Users\97254\Desktop\spl1\SPL_gym
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\amiel\CLionProjects\gym\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles\gym.dir\depend.make
@@ -57,116 +57,116 @@ include CMakeFiles\gym.dir\flags.make
 
 CMakeFiles\gym.dir\src\main.cpp.obj: CMakeFiles\gym.dir\flags.make
 CMakeFiles\gym.dir\src\main.cpp.obj: ..\src\main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\amiel\CLionProjects\gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gym.dir/src/main.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\main.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\amiel\CLionProjects\gym\src\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gym.dir/src/main.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\main.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\97254\Desktop\spl1\SPL_gym\src\main.cpp
 <<
 
 CMakeFiles\gym.dir\src\main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gym.dir/src/main.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\main.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\amiel\CLionProjects\gym\src\main.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\main.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\97254\Desktop\spl1\SPL_gym\src\main.cpp
 <<
 
 CMakeFiles\gym.dir\src\main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gym.dir/src/main.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\main.cpp.s /c C:\Users\amiel\CLionProjects\gym\src\main.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\main.cpp.s /c C:\Users\97254\Desktop\spl1\SPL_gym\src\main.cpp
 <<
 
 CMakeFiles\gym.dir\src\Customer.cpp.obj: CMakeFiles\gym.dir\flags.make
 CMakeFiles\gym.dir\src\Customer.cpp.obj: ..\src\Customer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\amiel\CLionProjects\gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gym.dir/src/Customer.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Customer.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\amiel\CLionProjects\gym\src\Customer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gym.dir/src/Customer.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Customer.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\97254\Desktop\spl1\SPL_gym\src\Customer.cpp
 <<
 
 CMakeFiles\gym.dir\src\Customer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gym.dir/src/Customer.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Customer.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\amiel\CLionProjects\gym\src\Customer.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Customer.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\97254\Desktop\spl1\SPL_gym\src\Customer.cpp
 <<
 
 CMakeFiles\gym.dir\src\Customer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gym.dir/src/Customer.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Customer.cpp.s /c C:\Users\amiel\CLionProjects\gym\src\Customer.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Customer.cpp.s /c C:\Users\97254\Desktop\spl1\SPL_gym\src\Customer.cpp
 <<
 
 CMakeFiles\gym.dir\src\Studio.cpp.obj: CMakeFiles\gym.dir\flags.make
 CMakeFiles\gym.dir\src\Studio.cpp.obj: ..\src\Studio.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\amiel\CLionProjects\gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gym.dir/src/Studio.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Studio.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\amiel\CLionProjects\gym\src\Studio.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gym.dir/src/Studio.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Studio.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\97254\Desktop\spl1\SPL_gym\src\Studio.cpp
 <<
 
 CMakeFiles\gym.dir\src\Studio.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gym.dir/src/Studio.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Studio.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\amiel\CLionProjects\gym\src\Studio.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Studio.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\97254\Desktop\spl1\SPL_gym\src\Studio.cpp
 <<
 
 CMakeFiles\gym.dir\src\Studio.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gym.dir/src/Studio.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Studio.cpp.s /c C:\Users\amiel\CLionProjects\gym\src\Studio.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Studio.cpp.s /c C:\Users\97254\Desktop\spl1\SPL_gym\src\Studio.cpp
 <<
 
 CMakeFiles\gym.dir\src\Action.cpp.obj: CMakeFiles\gym.dir\flags.make
 CMakeFiles\gym.dir\src\Action.cpp.obj: ..\src\Action.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\amiel\CLionProjects\gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gym.dir/src/Action.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Action.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\amiel\CLionProjects\gym\src\Action.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gym.dir/src/Action.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Action.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\97254\Desktop\spl1\SPL_gym\src\Action.cpp
 <<
 
 CMakeFiles\gym.dir\src\Action.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gym.dir/src/Action.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Action.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\amiel\CLionProjects\gym\src\Action.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Action.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\97254\Desktop\spl1\SPL_gym\src\Action.cpp
 <<
 
 CMakeFiles\gym.dir\src\Action.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gym.dir/src/Action.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Action.cpp.s /c C:\Users\amiel\CLionProjects\gym\src\Action.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Action.cpp.s /c C:\Users\97254\Desktop\spl1\SPL_gym\src\Action.cpp
 <<
 
 CMakeFiles\gym.dir\src\Workout.cpp.obj: CMakeFiles\gym.dir\flags.make
 CMakeFiles\gym.dir\src\Workout.cpp.obj: ..\src\Workout.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\amiel\CLionProjects\gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gym.dir/src/Workout.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Workout.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\amiel\CLionProjects\gym\src\Workout.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gym.dir/src/Workout.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Workout.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\97254\Desktop\spl1\SPL_gym\src\Workout.cpp
 <<
 
 CMakeFiles\gym.dir\src\Workout.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gym.dir/src/Workout.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Workout.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\amiel\CLionProjects\gym\src\Workout.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Workout.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\97254\Desktop\spl1\SPL_gym\src\Workout.cpp
 <<
 
 CMakeFiles\gym.dir\src\Workout.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gym.dir/src/Workout.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Workout.cpp.s /c C:\Users\amiel\CLionProjects\gym\src\Workout.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Workout.cpp.s /c C:\Users\97254\Desktop\spl1\SPL_gym\src\Workout.cpp
 <<
 
 CMakeFiles\gym.dir\src\Trainer.cpp.obj: CMakeFiles\gym.dir\flags.make
 CMakeFiles\gym.dir\src\Trainer.cpp.obj: ..\src\Trainer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\amiel\CLionProjects\gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/gym.dir/src/Trainer.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Trainer.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\amiel\CLionProjects\gym\src\Trainer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/gym.dir/src/Trainer.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\gym.dir\src\Trainer.cpp.obj /FdCMakeFiles\gym.dir\ /FS -c C:\Users\97254\Desktop\spl1\SPL_gym\src\Trainer.cpp
 <<
 
 CMakeFiles\gym.dir\src\Trainer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gym.dir/src/Trainer.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Trainer.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\amiel\CLionProjects\gym\src\Trainer.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\gym.dir\src\Trainer.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\97254\Desktop\spl1\SPL_gym\src\Trainer.cpp
 <<
 
 CMakeFiles\gym.dir\src\Trainer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gym.dir/src/Trainer.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Trainer.cpp.s /c C:\Users\amiel\CLionProjects\gym\src\Trainer.cpp
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\gym.dir\src\Trainer.cpp.s /c C:\Users\97254\Desktop\spl1\SPL_gym\src\Trainer.cpp
 <<
 
 # Object files for target gym
@@ -189,9 +189,9 @@ gym.exe: CMakeFiles\gym.dir\src\Workout.cpp.obj
 gym.exe: CMakeFiles\gym.dir\src\Trainer.cpp.obj
 gym.exe: CMakeFiles\gym.dir\build.make
 gym.exe: CMakeFiles\gym.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\amiel\CLionProjects\gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable gym.exe"
-	"D:\CLion\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\gym.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\gym.dir\objects1.rsp @<<
- /out:gym.exe /implib:gym.lib /pdb:C:\Users\amiel\CLionProjects\gym\cmake-build-debug\gym.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable gym.exe"
+	"D:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\gym.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\gym.dir\objects1.rsp @<<
+ /out:gym.exe /implib:gym.lib /pdb:C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug\gym.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
 
 # Rule to build all files generated by this target.
@@ -203,6 +203,6 @@ CMakeFiles\gym.dir\clean:
 .PHONY : CMakeFiles\gym.dir\clean
 
 CMakeFiles\gym.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" C:\Users\amiel\CLionProjects\gym C:\Users\amiel\CLionProjects\gym C:\Users\amiel\CLionProjects\gym\cmake-build-debug C:\Users\amiel\CLionProjects\gym\cmake-build-debug C:\Users\amiel\CLionProjects\gym\cmake-build-debug\CMakeFiles\gym.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" C:\Users\97254\Desktop\spl1\SPL_gym C:\Users\97254\Desktop\spl1\SPL_gym C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug C:\Users\97254\Desktop\spl1\SPL_gym\cmake-build-debug\CMakeFiles\gym.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles\gym.dir\depend
 
