@@ -7,7 +7,7 @@
 using namespace std;
 
 Trainer::Trainer(int t_capacity) : capacity(t_capacity) {
-
+    open = false;
 }
 
 bool Trainer::isOpen() {
@@ -91,15 +91,30 @@ Trainer::Trainer(Trainer &&other) : capacity(other.capacity),open(other.open),cu
     other.clear();
 }
 
-////Copy Assignment
-//Trainer& Trainer::operator=(const Trainer &other) {
-//
-//}
-//
-////Move Assignment
-//Trainer& Trainer::operator=(Trainer &&other) {
-//
-//}
+//Copy Assignment
+Trainer& Trainer::operator=(const Trainer &other) {
+    if(this!= &other) {
+        clear();
+        copy(other.capacity,other.open,other.customersList,other.orderList);
+    }
+    return *this;
+}
+
+//Move Assignment
+Trainer& Trainer::operator=(Trainer &&other) {
+    if(this!=&other){
+        clear();
+        customersList=move(other.customersList);
+        orderList=move(other.orderList);
+        capacity=other.capacity;
+        open=other.open;
+
+        capacity=0;
+        open=false;
+
+    }
+    return *this;
+}
 
 void Trainer::copy(int other_capacity, bool other_open, vector<Customer *> other_customersList, vector<OrderPair> other_orderList) {
     customersList = vector<Customer*>(other_customersList);

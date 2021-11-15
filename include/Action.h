@@ -18,6 +18,7 @@ public:
     ActionStatus getStatus() const;
     virtual void act(Studio& studio)=0;
     virtual std::string toString() const=0;
+    virtual ~BaseAction();
 protected:
     void complete();
     void error(std::string errorMsg);
@@ -33,9 +34,18 @@ public:
     OpenTrainer(int id, std::vector<Customer *> &customersList);
     void act(Studio &studio);
     std::string toString() const;
+    //RoF
+    ~OpenTrainer();
+    OpenTrainer(const OpenTrainer& other);
+    OpenTrainer& operator=(const OpenTrainer& other);
+    OpenTrainer(OpenTrainer&& other);
+    OpenTrainer& operator=(OpenTrainer&& other);
 private:
 	const int trainerId;
 	std::vector<Customer *> customers;
+    //RoF functions
+    void clear();
+    void copy(std::vector<Customer*> customers);
 };
 
 
