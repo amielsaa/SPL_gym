@@ -75,36 +75,36 @@ std::string CheapCustomer::toString() const
 //}
 
 //-------------------------------------------------------------------------------FullBodyCustomer-----------------------------------------------
-//FullBodyCustomer::FullBodyCustomer(std::string name, int id) : Customer(name,id){}
-//
-//std::vector<int> FullBodyCustomer::order(const std::vector<Workout> &workout_options) {
-//    std::vector<int> fbd_order;
-//    int cheapest_cardio = workout_options[0].getPrice();
-//    int cardio_id=0;
-//    int cheapest_anaerobic = workout_options[0].getPrice();
-//    int anaerobic_id=0;
-//    int m_expensive_mixtype=workout_options[0].getPrice();
-//    int mixtype_id =0;
-//    for (int i = 1; i < workout_options.size(); ++i) {
-//        if(workout_options[i].getType()==0 && workout_options[i].getPrice()<cheapest_anaerobic){
-//            cheapest_anaerobic = workout_options[i].getPrice();
-//            anaerobic_id = workout_options[i].getId();
-//        }
-//        else if (workout_options[i].getType()==2 && workout_options[i].getPrice()<cheapest_cardio){
-//            cheapest_cardio = workout_options[i].getPrice();
-//            cardio_id =workout_options[i].getId();
-//        }
-//        else if(workout_options[i].getType()==1 && workout_options[i].getPrice()>m_expensive_mixtype){
-//            m_expensive_mixtype = workout_options[i].getPrice();
-//            mixtype_id = workout_options[i].getId();
-//        }
-//    }
-//    fbd_order.push_back(cardio_id);
-//    fbd_order.push_back(mixtype_id);
-//    fbd_order.push_back(anaerobic_id);
-//    return fbd_order;
-//}
-//std::string FullBodyCustomer::toString() const {
-//    std::string str = "fbd "+ getName();
-//    return str;
-//}
+FullBodyCustomer::FullBodyCustomer(std::string name, int id) : Customer(name,id){}
+
+std::vector<int> FullBodyCustomer::order(const std::vector<Workout> &workout_options) {
+    std::vector<int> fbd_order;
+    int cheapest_cardio = workout_options[0].getPrice();
+    int cardio_id=0;
+    int cheapest_anaerobic = workout_options[0].getPrice();
+    int anaerobic_id=0;
+    int m_expensive_mixtype=workout_options[0].getPrice();
+    int mixtype_id =0;
+    for (int i = 1; i < workout_options.size(); ++i) {
+        if(workout_options[i].getType()==0 && workout_options[i].getPrice()<cheapest_anaerobic){
+            cheapest_anaerobic = workout_options[i].getPrice();
+            anaerobic_id = workout_options[i].getId();
+        }
+        else if (workout_options[i].getType()==2 && workout_options[i].getPrice()<cheapest_cardio){
+            cheapest_cardio = workout_options[i].getPrice();
+            cardio_id =workout_options[i].getId();
+        }
+        else if(workout_options[i].getType()==1 && workout_options[i].getPrice()>m_expensive_mixtype){
+            m_expensive_mixtype = workout_options[i].getPrice();
+            mixtype_id = workout_options[i].getId();
+        }
+    }
+    fbd_order.push_back(cardio_id);
+    fbd_order.push_back(mixtype_id);
+    fbd_order.push_back(anaerobic_id);
+    return fbd_order;
+}
+std::string FullBodyCustomer::toString() const {
+    std::string str = "fbd "+ getName();
+    return str;
+}
