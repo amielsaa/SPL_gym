@@ -21,7 +21,7 @@ Studio::Studio(const std::string &configFilePath) {
         if(str[i] != ',') {
             cout<<str[i]<<endl;
 
-            //trainers.push_back(new Trainer(str[i-'0']));
+            trainers.push_back(new Trainer(str[i]-'0'));
         }
     }
 
@@ -48,7 +48,15 @@ Trainer* Studio::getTrainer(int tid) {
 void Studio::start() {
     cout<<"Studio is now open!"<<endl;
     open = true;
-
+    /*
+    SweatyCustomer* swt = new SweatyCustomer("Moshe",3);
+    std::vector<Customer*> p;
+    p.push_back(swt);
+    OpenTrainer* t = new OpenTrainer(0,p);
+    t->act(*this);
+    t->getStatus();
+    delete swt;
+    delete t;*/
 }
 
 
