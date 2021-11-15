@@ -50,29 +50,45 @@ std::string CheapCustomer::toString() const
     return str;
 }
 ////-------------------------------------------------------------------------------HeavyMuscleCustomer-----------------------------------------------
-//HeavyMuscleCustomer::HeavyMuscleCustomer(std::string name, int id): Customer(name,id) {}
-//
-//std::vector<int> HeavyMuscleCustomer::order(const std::vector<Workout> &workout_options)
-//{
-//    std::vector<int> mcl_order;
-//    //sorting workout_options vector by each workout price
-//    struct price_check{
-//        bool operator() (Workout w1, Workout w2) { return (w1.getPrice()>w2.getPrice());}
-//    }workout_price_check;
-//    //sorting
-//    std::sort(workout_options[0],workout_options[workout_options.size()-1], workout_price_check);
-//    //insert  workout id to int vector
-//    for (int i = 0; i < workout_options.size(); ++i) {
-//        if(workout_options[i].getType()==0)
-//            mcl_order.push_back(workout_options[i].getId());
-//    }
-//    return  mcl_order;
+HeavyMuscleCustomer::HeavyMuscleCustomer(std::string name, int id): Customer(name,id) {}
+
+std::vector<int> HeavyMuscleCustomer::order(const std::vector<Workout> &workout_options)
+{
+    struct P_copy {
+        int wo_id;
+        int wo_price;
+        int wo_type;
+        P_copy(int id, int price, int type) {
+            this -> wo_id = id;
+            this -> wo_price = price;
+            this ->wo_type = type;
+        }
+    };
+    std::vector<int> mcl_order;
+    std::vector<P_copy> partial_copy;
+    //initialize partial copy
+    for (int i = 0; i < workout_options.size(); ++i) {
+        partial_copy.push_back(P_copy(workout_options[i].getId(),workout_options[i].getPrice(), workout_options[i].getType()));
+    }
+
+    std::sort(partial_copy.begin(),partial_copy.end(),[](const P_copy& lhs, const P_copy& rhs) {
+        return lhs.wo_price < rhs.wo_price;
+    });
+    //insert  workout id to int vector
+    for (int i = 0; i < partial_copy.size(); ++i) {
+        if(partial_copy[i].wo_type==0)
+            mcl_order.push_back(partial_copy[i].wo_id);
+    }
+    return  mcl_order;
+}
+//bool comparator(const Workout& lhs, const Workout& rhs) {
+//    return lhs.getPrice() < rhs.getPrice();
 //}
-//std::string HeavyMuscleCustomer::toString() const
-//{
-//    std::string str = "mcl "+ getName();
-//    return str;
-//}
+std::string HeavyMuscleCustomer::toString() const
+{
+    std::string str = "mcl "+ getName();
+    return str;
+}
 
 //-------------------------------------------------------------------------------FullBodyCustomer-----------------------------------------------
 FullBodyCustomer::FullBodyCustomer(std::string name, int id) : Customer(name,id){}
