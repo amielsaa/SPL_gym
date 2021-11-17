@@ -16,10 +16,9 @@ Studio::Studio(const std::string &configFilePath) {
 
     //trains
     string str = fileContent[1];
-    cout<<"trainers:"<<endl;
     for(int i=0; i<str.size(); i++){
         if(str[i] != ',') {
-            cout<<str[i]<<endl;
+            //cout<<str[i]<<endl;
 
             trainers.push_back(new Trainer(str[i]-'0'));
         }
@@ -28,7 +27,7 @@ Studio::Studio(const std::string &configFilePath) {
     //workouts
     for(int i=2;i<fileContent.size();i++) {
         vector<string> workouts = workoutSplitter(fileContent[i]);
-        cout<<workouts[0] +" " << getWorkoutTypeByString(workouts[1]) << " " + workouts[2] <<endl;
+        //<<workouts[0] +" " << getWorkoutTypeByString(workouts[1]) << " " + workouts[2] <<endl;
         workout_options.push_back(Workout(i-2,workouts[0],stoi(workouts[2]), getWorkoutTypeByString(workouts[1])));
     }
 }
@@ -48,16 +47,22 @@ Trainer* Studio::getTrainer(int tid) {
 void Studio::start() {
     cout<<"Studio is now open!"<<endl;
     open = true;
-    /*
-    SweatyCustomer* swt = new SweatyCustomer("Moshe",3);
-    std::vector<Customer*> p;
-    p.push_back(swt);
-    OpenTrainer* t = new OpenTrainer(0,p);
-    t->act(*this);
-    t->getStatus();
-    delete swt;
-    delete t;*/
+
+//    SweatyCustomer* swt = new SweatyCustomer("Moshe",3);
+//    std::vector<Customer*> p;
+//    p.push_back(swt);
+//    OpenTrainer* t = new OpenTrainer(0,p);
+//    t->act(*this);
+//    Order* o = new Order(0);
+//    o->act(*this);
+//    //t->getStatus();
+//    delete swt;
+//    delete t;
+
 }
+
+
+
 
 
 

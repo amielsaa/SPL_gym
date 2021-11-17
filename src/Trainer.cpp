@@ -80,6 +80,9 @@ int Trainer::getPosById(int id) {
 
 //Destructor
 Trainer::~Trainer() {
+    for(int i =0;i<customersList.size();i++){
+        delete customersList[i];
+    }
     clear();
 }
 //Copy Constructor

@@ -17,6 +17,12 @@ public:
     Trainer* getTrainer(int tid);
 	const std::vector<BaseAction*>& getActionsLog() const; // Return a reference to the history of actions
     std::vector<Workout>& getWorkoutOptions();
+    //RoF
+    //~Studio();
+    Studio(const Studio& other);
+    Studio(Studio&& other);
+    Studio& operator=(const Studio& other);
+    Studio& operator=(Studio&& other);
 
 private:
     bool open;

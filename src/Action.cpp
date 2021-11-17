@@ -34,7 +34,9 @@ BaseAction::~BaseAction() {
 
 //--------------------OPEN TRAINER------------------------
 
-OpenTrainer::OpenTrainer(int id, std::vector<Customer *> &customersList) : trainerId(id),customers(customersList) {}
+OpenTrainer::OpenTrainer(int id, std::vector<Customer *> &customersList) : trainerId(id),customers(customersList) {
+
+}
 
 void OpenTrainer::act(Studio &studio) {
     Trainer *trainer = studio.getTrainer(trainerId);
@@ -45,7 +47,6 @@ void OpenTrainer::act(Studio &studio) {
         trainer->openTrainer();
         for(int i =0;i<customers.size();i++){
             trainer->addCustomer(customers[i]);
-            cout<<"added"<<endl;
         }
         complete();
     } else{
@@ -57,10 +58,7 @@ void OpenTrainer::act(Studio &studio) {
 std::string OpenTrainer::toString() const {
     return "Trainer " + to_string(trainerId);
 }
-/*
- * assignment moves only the customers from one object to another
- * and doesn't change the trainerId (which is unique to each trainer)
- */
+
 //Destructor
 OpenTrainer::~OpenTrainer() {
     clear();
@@ -100,4 +98,29 @@ void OpenTrainer::clear() {
 }
 void OpenTrainer::copy(std::vector<Customer*> customers)  {
     this->customers = std::vector<Customer*>(customers);
+}
+
+//--------------------ORDER------------------------
+Order::Order(int id) : trainerId(id){}
+
+void Order::act(Studio &studio) {
+    Trainer * trainer = studio.getTrainer(trainerId);
+    if(!trainer || !trainer->isOpen()){
+        error("Trainer does not exist or is not open.");
+    } else{
+        vector<Customer*> customers = trainer->getCustomers();
+        vector<Workout>& workout_options = studio.getWorkoutOptions();
+        for(int i=0;i<customers.size();i++){
+            trainer->order(customers[i]->getId(),customers[i]->order(workout_options),workout_options);
+
+        }
+        vector<OrderPair> orders = trainer->getOrders();
+        for(int i =0;i<orders.size();i++){
+            cout<<trainer->getCustomer(orders[i].first)->getName()<<" Is Doing "<<orders[i].second.getName()<<endl;
+        }
+    }
+}
+
+std::string Order::toString() const {
+    return "order";
 }
