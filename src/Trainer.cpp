@@ -24,6 +24,10 @@ int Trainer::getSalary() {
 
 void Trainer::closeTrainer() {
     open = false;
+    for(int i=0;i<customersList.size();i++){
+        delete customersList[i];
+    }
+    orderList.clear();
 }
 
 void Trainer::openTrainer() {
@@ -39,7 +43,7 @@ void Trainer::order(const int customer_id, const std::vector<int> workout_ids,
 }
 
 vector<OrderPair>& Trainer::getOrders() {
-    return orderList;
+    return this->orderList;
 }
 
 vector<Customer*>& Trainer::getCustomers() {
@@ -96,6 +100,7 @@ Trainer::Trainer(Trainer &&other) : capacity(other.capacity),open(other.open),cu
 
 //Copy Assignment
 Trainer& Trainer::operator=(const Trainer &other) {
+
     if(this!= &other) {
         clear();
         copy(other.capacity,other.open,other.customersList,other.orderList);

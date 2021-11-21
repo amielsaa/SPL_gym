@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include "Customer.h"
+#include "Trainer.h"
 
 enum ActionStatus{
     COMPLETED, ERROR
@@ -68,6 +69,7 @@ private:
     const int srcTrainer;
     const int dstTrainer;
     const int id;
+    void moveOrdersById(int id, Trainer* sourceTrainer,Trainer* destTrainer);
 };
 
 

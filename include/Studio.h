@@ -29,9 +29,12 @@ private:
     std::vector<Trainer*> trainers;
     std::vector<Workout> workout_options;
     std::vector<BaseAction*> actionsLog;
+    int customerId;
+    Customer* createCustomerByType(std::string name,std::string type);
     std::vector<std::string> parseFile(const std::string& conf);
     std::vector<std::string> workoutSplitter(std::string workoutContent);
     WorkoutType getWorkoutTypeByString(std::string workoutString);
+    std::vector<std::string> inputSplitter(std::string inputString);
 };
 
 #endif
