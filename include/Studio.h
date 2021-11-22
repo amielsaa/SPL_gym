@@ -7,7 +7,7 @@
 #include "Trainer.h"
 #include "Action.h"
 
-
+extern Studio* backup;
 class Studio{		
 public:
 	Studio();
@@ -18,7 +18,7 @@ public:
 	const std::vector<BaseAction*>& getActionsLog() const; // Return a reference to the history of actions
     std::vector<Workout>& getWorkoutOptions();
     //RoF
-    //~Studio();
+    ~Studio();
     Studio(const Studio& other);
     Studio(Studio&& other);
     Studio& operator=(const Studio& other);
@@ -35,6 +35,8 @@ private:
     std::vector<std::string> workoutSplitter(std::string workoutContent);
     WorkoutType getWorkoutTypeByString(std::string workoutString);
     std::vector<std::string> inputSplitter(std::string inputString);
+    void clear();
+    void copy(bool other_open,std::vector<Trainer*> other_trainers,std::vector<Workout> other_workout_options,std::vector<BaseAction*> other_actionsLog,int other_customerId);
 };
 
 #endif
