@@ -12,6 +12,11 @@ public:
     virtual std::string toString() const = 0;
     std::string getName() const;
     int getId() const;
+    // Rule of 3
+    virtual ~Customer();
+     Customer(const Customer&);
+    //Customer& operator=(const Customer&);
+
 private:
     const std::string name;
     const int id;
@@ -24,6 +29,7 @@ public:
     std::vector<int> order(const std::vector<Workout> &workout_options);
     std::string toString() const;
 private:
+    ;
 };
 
 

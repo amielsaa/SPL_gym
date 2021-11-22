@@ -10,7 +10,15 @@ std::string Customer ::getName() const {
 }
 int Customer::getId() const {
     return  id;
+}
+Customer::~Customer(){}
+Customer::Customer(const Customer & other) :id(other.getId()),name(other.getName()) {}
 
+//Customer &Customer::operator=(const Customer &other) {
+//    if(this!=&other)
+//    {
+//
+//    }
 }
 //-------------------------------------------------------------------------------SweatyCustomer-----------------------------------------------
 SweatyCustomer::SweatyCustomer(std::string name, int id):Customer (name, id) {}
@@ -26,6 +34,7 @@ std::string SweatyCustomer::toString() const {
     std::string str = "swt "+ getName();
     return str;
 }
+
 //-------------------------------------------------------------------------------cheapCostumer-----------------------------------------------
 CheapCustomer::CheapCustomer(std::string name, int id): Customer(name,id) {}
 
