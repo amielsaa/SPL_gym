@@ -117,8 +117,8 @@ Trainer& Trainer::operator=(Trainer &&other) {
         capacity=other.capacity;
         open=other.open;
 
-        capacity=0;
-        open=false;
+        other.capacity=0;
+        other.open=false;
 
     }
     return *this;

@@ -28,3 +28,14 @@ WorkoutType Workout::getType() const {
     return type;
 }
 
+std::string Workout::getStringType() {
+    if(type == 0)
+        return "ANAEROBIC";
+    else if(type==1)
+        return "MIXED";
+    else if(type==2)
+        return "CARDIO";
+    else
+        return  "";
+}
+

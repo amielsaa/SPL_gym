@@ -60,7 +60,11 @@ void OpenTrainer::act(Studio &studio) {
 
 
 std::string OpenTrainer::toString() const {
-    return "Trainer " + to_string(trainerId);
+    string toString = "open " + to_string(trainerId);
+    for(int i=0;i<customers.size();i++){
+        toString.append(customers[i]->toString());
+    }
+    return toString;
 }
 
 //Destructor
@@ -208,6 +212,21 @@ std::string CloseAll::toString() const {
     return "closeall";
 }
 
+//--------------------PrintWorkoutOptions------------------------
+
+PrintWorkoutOptions::PrintWorkoutOptions() {}
+
+void PrintWorkoutOptions::act(Studio &studio) {
+    for(int i=0;i<studio.getWorkoutOptions().size();i++){
+        cout<<studio.getWorkoutOptions()[i].getName()<<", "<<studio.getWorkoutOptions()[i].getStringType()<<", "<<studio.getWorkoutOptions()[i].getPrice()<<endl;
+    }
+    complete();
+}
+
+std::string PrintWorkoutOptions::toString() const {
+    return "Print workout options";
+}
+
 //--------------------PrintTrainerStatus------------------------
 PrintTrainerStatus::PrintTrainerStatus(int id) : trainerId(id) {}
 
@@ -231,4 +250,30 @@ void PrintTrainerStatus::act(Studio &studio) {
 
 std::string PrintTrainerStatus::toString() const {
     return "status";
+}
+
+//--------------------PrintActionsLog------------------------
+PrintActionsLog::PrintActionsLog() {}
+
+void PrintActionsLog::act(Studio &studio) {
+    for(int i =0;i<studio.getActionsLog().size();i++){
+        cout<<studio.getActionsLog()[i]->toString()<<endl;
+    }
+}
+
+std::string PrintActionsLog::toString() const {
+    return "log";
+}
+
+//--------------------BackUpStudio------------------------
+BackupStudio::BackupStudio() {}
+
+void BackupStudio::act(Studio &studio) {
+    Studio* studioBackup = new Studio(studio);
+    delete backup;
+    backup = studioBackup;
+}
+
+std::string BackupStudio::toString() const {
+    return "backup";
 }

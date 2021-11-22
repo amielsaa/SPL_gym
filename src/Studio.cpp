@@ -101,6 +101,14 @@ void Studio::start() {
             open = false;
         }
         //workout_options case
+        else if(data[0].compare("workout_options")==0){
+            PrintWorkoutOptions* workout = new PrintWorkoutOptions();
+            workout->act(*this);
+            if(workout->getStatus()==0)
+                actionsLog.push_back(workout);
+            else
+                delete workout;
+        }
         //status case
         else if(data[0].compare("status")==0) {
             PrintTrainerStatus* status = new PrintTrainerStatus(stoi(data[1]));
@@ -110,9 +118,20 @@ void Studio::start() {
             else
                 delete status;
         }
+        //print actions log case
+        else if(data[0].compare("log")==0) {
+            PrintActionsLog* print = new PrintActionsLog();
+            print->act(*this);
+            //if(print->getStatus()==0)
+
+        }
     }
 
 
+}
+
+const std::vector<BaseAction *> &Studio::getActionsLog() const {
+    return actionsLog;
 }
 
 Customer *Studio::createCustomerByType(std::string name, std::string type) {
@@ -190,3 +209,64 @@ vector<string> Studio::parseFile(const string& conf) {
     inFile.close();
     return fileContent;
 }
+
+Studio::~Studio() {
+    clear();
+}
+Studio::Studio(const Studio &other) {
+    copy(other.open,other.trainers,other.workout_options,other.actionsLog,other.customerId);
+}
+
+Studio::Studio(Studio &&other) : open(other.open),trainers(other.trainers),workout_options(other.workout_options), actionsLog(other.actionsLog),customerId(other.customerId) {
+    other.clear();
+}
+
+Studio &Studio::operator=(const Studio& other) {
+    if(this!=&other) {
+        clear();
+        copy(other.open,other.trainers,other.workout_options,other.actionsLog,other.customerId);
+    }
+    return *this;
+}
+
+Studio &Studio::operator=(Studio &&other) {
+    if(this!=&other) {
+        clear();
+        trainers = move(other.trainers);
+        workout_options = move(other.workout_options);
+        actionsLog = move(other.actionsLog);
+        open = other.open;
+        customerId=other.customerId;
+
+        other.open = false;
+        other.customerId = 0;
+    }
+    return *this;
+}
+
+void Studio::clear() {
+    for(int i=0;i<trainers.size();i++){
+        delete trainers[i];
+    }
+    for(int i=0;i<actionsLog.size();i++){
+        delete actionsLog[i];
+    }
+    if(!trainers.empty())
+        trainers.clear();
+    if(!workout_options.empty())
+        workout_options.clear();
+    if(!actionsLog.empty())
+        actionsLog.clear();
+    open= false;
+    customerId=0;
+}
+
+void Studio::copy(bool other_open, std::vector<Trainer *> other_trainers, std::vector<Workout> other_workout_options,
+                  std::vector<BaseAction *> other_actionsLog, int other_customerId) {
+    open = other_open;
+    trainers = other_trainers;
+    workout_options = other_workout_options;
+    actionsLog = other_actionsLog;
+    customerId = other_customerId;
+}
+
