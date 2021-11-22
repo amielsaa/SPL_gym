@@ -277,3 +277,18 @@ void BackupStudio::act(Studio &studio) {
 std::string BackupStudio::toString() const {
     return "backup";
 }
+
+//-------------------RestoreStudio-------------------------
+RestoreStudio::RestoreStudio() {}
+
+void RestoreStudio::act(Studio &studio) {
+    if(backup== nullptr)
+        cout<<"no backup available"<<endl;
+    else{
+        studio = *backup;
+    }
+}
+
+std::string RestoreStudio::toString() const {
+    return "restore";
+}
