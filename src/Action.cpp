@@ -112,6 +112,8 @@ void OpenTrainer::copy(std::vector<Customer*> customers)  {
 Order::Order(int id) : trainerId(id){}
 
 void Order::act(Studio &studio) {
+    if(trainerId>=studio.getNumOfTrainers())
+        error("Trainer does not exist or is not open.");
     Trainer * trainer = studio.getTrainer(trainerId);
     if(!trainer || !trainer->isOpen()){
         error("Trainer does not exist or is not open.");
@@ -138,9 +140,12 @@ std::string Order::toString() const {
 MoveCustomer::MoveCustomer(int src, int dst, int customerId) : srcTrainer(src),dstTrainer(dst),id(customerId) {}
 
 void MoveCustomer::act(Studio &studio) {
-
+    if(dstTrainer>=studio.getNumOfTrainers()||srcTrainer>=studio.getNumOfTrainers())
+        error("Trainer does not exist or is not open.");
     Trainer* destTrainer = studio.getTrainer(dstTrainer);
     Trainer* sourceTrainer = studio.getTrainer(srcTrainer);
+    if(id>=sourceTrainer->getCustomers().size())
+        error("customer does not exist");
     Customer* customer = sourceTrainer->getCustomer(id);
     if(!destTrainer || !sourceTrainer || !destTrainer->isOpen() | !sourceTrainer->isOpen()
         | !sourceTrainer->getCustomer(customer->getId()) | destTrainer->getCapacity() == destTrainer->getCustomers().size()) {
@@ -162,7 +167,7 @@ void MoveCustomer::act(Studio &studio) {
         destTrainer->order(customer->getId(),orderIds,studio.getWorkoutOptions());
         complete();
     }
-    if(sourceTrainer->getCustomers().size()==0){
+    if(sourceTrainer->getCustomers().empty()){
         sourceTrainer->closeTrainer();
     }
 
@@ -269,9 +274,14 @@ std::string PrintActionsLog::toString() const {
 BackupStudio::BackupStudio() {}
 
 void BackupStudio::act(Studio &studio) {
-    Studio* studioBackup = new Studio(studio);
-    delete backup;
+    auto* studioBackup = new Studio(studio);
+    if(backup== nullptr)
+        backup = new Studio(studio);
+    else
+        backup = nullptr;
+
     backup = studioBackup;
+
 }
 
 std::string BackupStudio::toString() const {

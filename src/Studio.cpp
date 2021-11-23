@@ -128,6 +128,7 @@ void Studio::start() {
         else if(data[0].compare("backup")==0){
             BackupStudio *backupStudio = new BackupStudio();
             backupStudio->act(*this);
+            actionsLog.push_back(backupStudio);
         }
         else if(data[0].compare("restore")==0){
             RestoreStudio *restoreStudio = new RestoreStudio();
