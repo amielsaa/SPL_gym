@@ -35,6 +35,7 @@ std::string SweatyCustomer::toString() const {
     return str;
 }
 
+
 //-------------------------------------------------------------------------------cheapCostumer-----------------------------------------------
 CheapCustomer::CheapCustomer(std::string name, int id): Customer(name,id) {}
 

@@ -48,7 +48,6 @@ Trainer* Studio::getTrainer(int tid) {
 void Studio::start() {
     cout<<"Studio is now open!"<<endl;
     open = true;
-
     while(open) {
         string input;
         getline(cin,input);
@@ -63,7 +62,7 @@ void Studio::start() {
             OpenTrainer* open = new OpenTrainer(stoi(data[1]),customers);
             open->act(*this);
             if(open->getStatus()==0)
-                actionsLog.push_back(open);
+                tempLog.push_back(open);
             else
                 delete open;
         }
@@ -72,7 +71,7 @@ void Studio::start() {
             Order* order = new Order(stoi(data[1]));
             order->act(*this);
             if(order->getStatus()==0)
-                actionsLog.push_back(order);
+                tempLog.push_back(order);
             else
                 delete order;
         }
@@ -81,7 +80,7 @@ void Studio::start() {
             MoveCustomer* move = new MoveCustomer(stoi(data[1]),stoi(data[2]),stoi(data[3]));
             move->act(*this);
             if(move->getStatus()==0)
-                actionsLog.push_back(move);
+                tempLog.push_back(move);
             else
                 delete move;
         }
@@ -90,7 +89,7 @@ void Studio::start() {
             Close* close = new Close(stoi(data[1]));
             close->act(*this);
             if(close->getStatus()==0)
-                actionsLog.push_back(close);
+                tempLog.push_back(close);
             else
                 delete close;
         }
@@ -98,6 +97,7 @@ void Studio::start() {
         else if(data[0].compare("closeall")==0){
             CloseAll* closeall  = new CloseAll();
             closeall->act(*this);
+            delete closeall;
             open = false;
         }
         //workout_options case
@@ -105,7 +105,7 @@ void Studio::start() {
             PrintWorkoutOptions* workout = new PrintWorkoutOptions();
             workout->act(*this);
             if(workout->getStatus()==0)
-                actionsLog.push_back(workout);
+                tempLog.push_back(workout);
             else
                 delete workout;
         }
@@ -114,7 +114,7 @@ void Studio::start() {
             PrintTrainerStatus* status = new PrintTrainerStatus(stoi(data[1]));
             status->act(*this);
             if(status->getStatus()==0)
-                actionsLog.push_back(status);
+                tempLog.push_back(status);
             else
                 delete status;
         }
@@ -122,13 +122,27 @@ void Studio::start() {
         else if(data[0].compare("log")==0) {
             PrintActionsLog* print = new PrintActionsLog();
             print->act(*this);
-            //if(print->getStatus()==0)
+            if(print->getStatus()==0)
+                tempLog.push_back(print);
+            else{
+
+                delete print;
+            }
+
 
         }
         else if(data[0].compare("backup")==0){
             BackupStudio *backupStudio = new BackupStudio();
+            for (int i = 0; i < tempLog.size(); ++i) {
+                actionsLog.push_back(tempLog[i]);
+            }
+            tempLog.clear();
             backupStudio->act(*this);
-            actionsLog.push_back(backupStudio);
+            if(backupStudio->getStatus()==0)
+                tempLog.push_back(backupStudio);
+            else
+                delete backupStudio;
+
         }
         else if(data[0].compare("restore")==0){
             RestoreStudio *restoreStudio = new RestoreStudio();
@@ -141,6 +155,10 @@ void Studio::start() {
 
 const std::vector<BaseAction *> &Studio::getActionsLog() const {
     return actionsLog;
+}
+
+const std::vector<BaseAction *> &Studio::getTempLog() const {
+    return tempLog;
 }
 
 Customer *Studio::createCustomerByType(std::string name, std::string type) {
@@ -260,8 +278,13 @@ void Studio::clear() {
     for(int i=0;i<actionsLog.size();i++){
         delete actionsLog[i];
     }
+    for(int i=0;i<tempLog.size();i++){
+        delete tempLog[i];
+    }
     if(!trainers.empty())
         trainers.clear();
+    if(!tempLog.empty())
+        tempLog.clear();
     if(!workout_options.empty())
         workout_options.clear();
     if(!actionsLog.empty())
@@ -273,9 +296,13 @@ void Studio::clear() {
 void Studio::copy(bool other_open, std::vector<Trainer *> other_trainers, std::vector<Workout> other_workout_options,
                   std::vector<BaseAction *> other_actionsLog, int other_customerId) {
     open = other_open;
-    trainers = other_trainers;
+    for (int i = 0; i < other_trainers.size(); ++i) {
+        Trainer* train = new Trainer(*other_trainers[i]); // zarih livdok
+        trainers.push_back(train);
+    }
+
     workout_options = other_workout_options;
-    actionsLog = other_actionsLog;
     customerId = other_customerId;
 }
+
 
