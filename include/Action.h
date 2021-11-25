@@ -20,7 +20,7 @@ public:
     virtual void act(Studio& studio)=0;
     virtual std::string toString() const=0;
     virtual ~BaseAction();
-    virtual BaseAction* copy();
+    virtual BaseAction* copy()=0;
 protected:
     void complete();
     void error(std::string errorMsg);
@@ -93,6 +93,7 @@ public:
     CloseAll();
     void act(Studio &studio);
     std::string toString() const;
+    CloseAll* copy();
 private:
 };
 

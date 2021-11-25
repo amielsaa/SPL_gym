@@ -16,8 +16,9 @@ public:
     int getNumOfTrainers() const;
     Trainer* getTrainer(int tid);
 	const std::vector<BaseAction*>& getActionsLog() const; // Return a reference to the history of actions
-    const std::vector<BaseAction*>& getTempLog() const;
     std::vector<Workout>& getWorkoutOptions();
+    bool isOpen();
+    void inputIteration();
     //RoF
     ~Studio();
     Studio(const Studio& other);
@@ -30,7 +31,6 @@ private:
     std::vector<Trainer*> trainers;
     std::vector<Workout> workout_options;
     std::vector<BaseAction*> actionsLog;
-    std::vector<BaseAction*> tempLog;
     int customerId;
     Customer* createCustomerByType(std::string name,std::string type);
     std::vector<std::string> parseFile(const std::string& conf);

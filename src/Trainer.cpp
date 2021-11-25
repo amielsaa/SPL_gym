@@ -124,7 +124,6 @@ Trainer& Trainer::operator=(Trainer &&other) {
 
 void Trainer::copy(int other_capacity, bool other_open, vector<Customer *> other_customersList, vector<OrderPair> other_orderList) {
 
-    customersList = vector<Customer*>(other_customersList);
 
     for(int i=0;i<other_customersList.size();i++){
         customersList.push_back(other_customersList[i]->copy());

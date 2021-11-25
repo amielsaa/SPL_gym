@@ -14,6 +14,9 @@ int main(int argc, char** argv){
     string configurationFile = argv[1];
     Studio studio(configurationFile);
     studio.start();
+    while(studio.isOpen()){
+        studio.inputIteration();
+    }
     if(backup!=nullptr){
     	delete backup;
     	backup = nullptr;

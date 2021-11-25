@@ -280,6 +280,10 @@ std::string CloseAll::toString() const {
     return "closeall";
 }
 
+CloseAll *CloseAll::copy() {
+    return this;
+}
+
 //--------------------PrintWorkoutOptions------------------------
 
 PrintWorkoutOptions::PrintWorkoutOptions() {}
@@ -354,8 +358,6 @@ PrintActionsLog::PrintActionsLog() {}
 void PrintActionsLog::act(Studio &studio) {
     for(int i =0;i<studio.getActionsLog().size();i++){
         cout<<studio.getActionsLog()[i]->toString()<<endl;
-    }for(int i =0;i<studio.getTempLog().size();i++){
-        cout<<studio.getTempLog()[i]->toString()<<endl;
     }
     complete();
 }
@@ -382,14 +384,13 @@ PrintActionsLog *PrintActionsLog::copy() {
 BackupStudio::BackupStudio() {}
 
 void BackupStudio::act(Studio &studio) {
-    auto* studioBackup = new Studio(studio);
+    // auto* studioBackup = new Studio(studio);
 //    if(backup== nullptr)
 //        backup = new Studio(studio);
     if(backup!= nullptr)
         delete backup;
 
-    backup = studioBackup;
-    delete studioBackup;
+    backup = new Studio(studio);
 
 }
 
@@ -419,7 +420,7 @@ void RestoreStudio::act(Studio &studio) {
         cout<<"no backup available"<<endl;
     else{
         //delete studio;
-        studio = *backup;
+        studio = Studio(*backup);
     }
 }
 

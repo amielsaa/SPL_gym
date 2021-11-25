@@ -13,7 +13,7 @@ int Customer::getId() const {
 }
 Customer::~Customer(){}
 Customer::Customer(const Customer & other) :id(other.getId()),name(other.getName()) {}
-Customer* Customer::copy(){}
+//Customer* Customer::copy(){}
 
 //Customer &Customer::operator=(const Customer &other) {
 //    if(this!=&other)

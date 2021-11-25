@@ -15,7 +15,7 @@ public:
     // Rule of 3
     virtual ~Customer();
     Customer(const Customer&);
-    virtual Customer* copy();
+    virtual Customer* copy()=0;
     //Customer& operator=(const Customer&);
 
 private:
