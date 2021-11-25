@@ -112,6 +112,20 @@ void OpenTrainer::copy(std::vector<Customer*> customers)  {
     this->customers = std::vector<Customer*>(customers);
 }
 
+OpenTrainer *OpenTrainer::copy() {
+    vector<Customer*> open_cus;
+    for(int i=0;i<customers.size();i++){
+        open_cus.push_back(customers[i]->copy());
+    }
+    OpenTrainer* open = new OpenTrainer(this->trainerId,open_cus);
+    if(this->getStatus()==0)
+        open->complete();
+    else
+        open->error(this->getErrorMsg());
+    return open;
+
+}
+
 //--------------------ORDER------------------------
 Order::Order(int id) : trainerId(id){}
 
@@ -146,6 +160,15 @@ std::string Order::toString() const {
     else
         toString.append(" Error: " + getErrorMsg());
     return toString;
+}
+
+Order *Order::copy() {
+    Order* ord = new Order(trainerId);
+    if(this->getStatus()==0)
+        ord->complete();
+    else
+        ord->error(this->getErrorMsg());
+    return ord;
 }
 
 //--------------------MOVE CUSTOMER------------------------
@@ -195,6 +218,15 @@ std::string MoveCustomer::toString() const {
     return toString;
 }
 
+MoveCustomer *MoveCustomer::copy() {
+    MoveCustomer* mov = new MoveCustomer(this->srcTrainer,this->dstTrainer,this->id);
+    if(this->getStatus()==0)
+        mov->complete();
+    else
+        mov->error(this->getErrorMsg());
+    return mov;
+}
+
 //--------------------CLOSE------------------------
 
 Close::Close(int id) : trainerId(id) {}
@@ -218,6 +250,15 @@ std::string Close::toString() const {
     else
         toString.append(" Error: " + getErrorMsg());
     return toString;
+}
+
+Close *Close::copy() {
+    Close* clos = new Close(this->trainerId);
+    if(this->getStatus()==0)
+        clos->complete();
+    else
+        clos->error(this->getErrorMsg());
+    return clos;
 }
 
 //--------------------CloseAll------------------------
@@ -257,6 +298,15 @@ std::string PrintWorkoutOptions::toString() const {
     else
         toString.append(" Error: " + getErrorMsg());
     return toString;
+}
+
+PrintWorkoutOptions *PrintWorkoutOptions::copy() {
+    PrintWorkoutOptions* print = new PrintWorkoutOptions();
+    if(this->getStatus()==0)
+        print->complete();
+    else
+        print->error(this->getErrorMsg());
+    return print;
 }
 
 //--------------------PrintTrainerStatus------------------------
