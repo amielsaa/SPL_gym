@@ -112,6 +112,7 @@ public:
     PrintTrainerStatus(int id);
     void act(Studio &studio);
     std::string toString() const;
+    PrintTrainerStatus* copy();
 private:
     const int trainerId;
 };

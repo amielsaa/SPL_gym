@@ -289,6 +289,14 @@ std::string PrintTrainerStatus::toString() const {
         toString.append(" Error: " + getErrorMsg());
     return toString;
 }
+PrintTrainerStatus *PrintTrainerStatus::copy() {
+    PrintTrainerStatus * printTrainerStatus = new PrintTrainerStatus(this->trainerId);
+    if(this->getStatus()==0)
+        printTrainerStatus->complete();
+    else
+        printTrainerStatus->error(this->getErrorMsg());
+    return printTrainerStatus;
+}
 
 //--------------------PrintActionsLog------------------------
 PrintActionsLog::PrintActionsLog() {}
@@ -309,6 +317,15 @@ std::string PrintActionsLog::toString() const {
     else
         toString.append(" Error: " + getErrorMsg());
     return toString;
+}
+PrintActionsLog *PrintActionsLog::copy() {
+    PrintActionsLog *printActionsLog = new PrintActionsLog();
+    if(this->getStatus()==0)
+        printActionsLog->complete();
+    else
+        printActionsLog->error(this->getErrorMsg());
+    return printActionsLog;
+
 }
 
 //--------------------BackUpStudio------------------------
@@ -334,6 +351,15 @@ std::string BackupStudio::toString() const {
         toString.append(" Error: " + getErrorMsg());
     return toString;
 }
+BackupStudio *BackupStudio::copy() {
+    BackupStudio * backupStudio = new BackupStudio();
+    if(this->getStatus()==0)
+        backupStudio->complete();
+    else
+        backupStudio->error(this->getErrorMsg());
+    return backupStudio;
+
+}
 
 //-------------------RestoreStudio-------------------------
 RestoreStudio::RestoreStudio() {}
@@ -354,4 +380,13 @@ std::string RestoreStudio::toString() const {
     else
         toString.append(" Error: " + getErrorMsg());
     return toString;
+}
+RestoreStudio *RestoreStudio:: copy(){
+    RestoreStudio * restoreStudio = new RestoreStudio();
+    if(this->getStatus()==0)
+        restoreStudio->complete();
+    else
+        restoreStudio->error(this->getErrorMsg());
+    return restoreStudio;
+
 }
