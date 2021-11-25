@@ -13,6 +13,7 @@ int Customer::getId() const {
 }
 Customer::~Customer(){}
 Customer::Customer(const Customer & other) :id(other.getId()),name(other.getName()) {}
+Customer* Customer::copy(){}
 
 //Customer &Customer::operator=(const Customer &other) {
 //    if(this!=&other)
@@ -33,6 +34,10 @@ std::vector<int> SweatyCustomer::order(const std::vector<Workout> &workout_optio
 std::string SweatyCustomer::toString() const {
     std::string str = getName()+",swt";
     return str;
+}
+Customer* SweatyCustomer::copy(){
+    SweatyCustomer* newCustomer =new  SweatyCustomer(getName(), getId());
+    return newCustomer;
 }
 
 
@@ -58,6 +63,10 @@ std::string CheapCustomer::toString() const
 {
     std::string str = getName()+" ,chp";
     return str;
+}
+Customer* CheapCustomer::copy(){
+    CheapCustomer* newCustomer =new  CheapCustomer(getName(), getId());
+    return newCustomer;
 }
 ////-------------------------------------------------------------------------------HeavyMuscleCustomer-----------------------------------------------
 HeavyMuscleCustomer::HeavyMuscleCustomer(std::string name, int id): Customer(name,id) {}
@@ -99,7 +108,10 @@ std::string HeavyMuscleCustomer::toString() const
     std::string str =getName() +", mcl";
     return str;
 }
-
+Customer* HeavyMuscleCustomer::copy() {
+    HeavyMuscleCustomer *newCustomer = new HeavyMuscleCustomer(getName(), getId());
+    return newCustomer;
+}
 //-------------------------------------------------------------------------------FullBodyCustomer-----------------------------------------------
 FullBodyCustomer::FullBodyCustomer(std::string name, int id) : Customer(name,id){}
 
@@ -133,4 +145,8 @@ std::vector<int> FullBodyCustomer::order(const std::vector<Workout> &workout_opt
 std::string FullBodyCustomer::toString() const {
     std::string str =  getName()+", fbd ";
     return str;
+}
+Customer* FullBodyCustomer::copy() {
+    FullBodyCustomer *newCustomer = new FullBodyCustomer(getName(), getId());
+    return newCustomer;
 }

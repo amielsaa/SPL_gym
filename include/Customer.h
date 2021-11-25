@@ -14,7 +14,8 @@ public:
     int getId() const;
     // Rule of 3
     virtual ~Customer();
-     Customer(const Customer&);
+    Customer(const Customer&);
+    virtual Customer* copy();
     //Customer& operator=(const Customer&);
 
 private:
@@ -28,6 +29,7 @@ public:
 	SweatyCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Workout> &workout_options);
     std::string toString() const;
+    Customer* copy();
 private:
     ;
 };
@@ -38,6 +40,7 @@ public:
 	CheapCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Workout> &workout_options);
     std::string toString() const;
+    Customer* copy();
 private:
 };
 
@@ -47,6 +50,7 @@ public:
 	HeavyMuscleCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Workout> &workout_options);
     std::string toString() const;
+    Customer* copy();
 private:
 };
 
@@ -56,6 +60,7 @@ public:
 	FullBodyCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Workout> &workout_options);
     std::string toString() const;
+    Customer* copy();
 private:
 };
 

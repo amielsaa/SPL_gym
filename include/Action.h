@@ -20,6 +20,7 @@ public:
     virtual void act(Studio& studio)=0;
     virtual std::string toString() const=0;
     virtual ~BaseAction();
+    virtual BaseAction* copy();
 protected:
     void complete();
     void error(std::string errorMsg);
@@ -41,6 +42,7 @@ public:
     OpenTrainer& operator=(const OpenTrainer& other);
     OpenTrainer(OpenTrainer&& other);
     OpenTrainer& operator=(OpenTrainer&& other);
+    OpenTrainer* copy();
 private:
 	const int trainerId;
 	std::vector<Customer *> customers;
@@ -55,6 +57,7 @@ public:
     Order(int id);
     void act(Studio &studio);
     std::string toString() const;
+    Order* copy();
 private:
     const int trainerId;
 };
@@ -65,6 +68,7 @@ public:
     MoveCustomer(int src, int dst, int customerId);
     void act(Studio &studio);
     std::string toString() const;
+    MoveCustomer* copy();
 private:
     const int srcTrainer;
     const int dstTrainer;
@@ -78,6 +82,7 @@ public:
     Close(int id);
     void act(Studio &studio);
     std::string toString() const;
+    Close* copy();
 private:
     const int trainerId;
 };
@@ -97,6 +102,7 @@ public:
     PrintWorkoutOptions();
     void act(Studio &studio);
     std::string toString() const;
+    PrintWorkoutOptions* copy();
 private:
 };
 
@@ -116,6 +122,7 @@ public:
     PrintActionsLog();
     void act(Studio &studio);
     std::string toString() const;
+    PrintActionsLog* copy();
 private:
 };
 
@@ -125,6 +132,7 @@ public:
     BackupStudio();
     void act(Studio &studio);
     std::string toString() const;
+    BackupStudio* copy();
 private:
 };
 
@@ -134,6 +142,7 @@ public:
     RestoreStudio();
     void act(Studio &studio);
     std::string toString() const;
+    RestoreStudio* copy();
 
 };
 
