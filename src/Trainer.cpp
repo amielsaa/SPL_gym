@@ -82,9 +82,6 @@ int Trainer::getPosById(int id) {
 
 //Destructor
 Trainer::~Trainer() {
-    for(int i =0;i<customersList.size();i++){
-        delete customersList[i];
-    }
     clear();
 }
 //Copy Constructor
@@ -134,6 +131,9 @@ void Trainer::copy(int other_capacity, bool other_open, vector<Customer *> other
 }
 
 void Trainer::clear() {
+    for(int i =0;i<customersList.size();i++){
+        delete customersList[i];
+    }
     if(!customersList.empty())
         customersList.clear();
     if(!orderList.empty())

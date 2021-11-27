@@ -140,6 +140,10 @@ void Studio::inputIteration() {
     else if(data[0].compare("restore")==0){
         RestoreStudio *restoreStudio = new RestoreStudio();
         restoreStudio->act(*this);
+        if(restoreStudio->getStatus()==0)
+            actionsLog.push_back(restoreStudio);
+        else
+            delete restoreStudio;
     }
 }
 

@@ -47,7 +47,6 @@ void OpenTrainer::act(Studio &studio) {
             delete customers[i];
         }
     } else if(trainer->getCapacity() >= customers.size()){
-
         trainer->openTrainer();
         for(int i =0;i<customers.size();i++){
             trainer->addCustomer(customers[i]);
@@ -104,6 +103,9 @@ OpenTrainer& OpenTrainer::operator=(OpenTrainer &&other) {
 }
 
 void OpenTrainer::clear() {
+    for(int i =0;i<customers.size();i++){
+        delete customers[i];
+    }
     if(!customers.empty()) {
         customers.clear();
     }
@@ -391,6 +393,7 @@ void BackupStudio::act(Studio &studio) {
         delete backup;
 
     backup = new Studio(studio);
+    complete();
 
 }
 
@@ -420,8 +423,9 @@ void RestoreStudio::act(Studio &studio) {
         cout<<"no backup available"<<endl;
     else{
         //delete studio;
-        studio = Studio(*backup);
+        studio = *backup;
     }
+    complete();
 }
 
 std::string RestoreStudio::toString() const {
