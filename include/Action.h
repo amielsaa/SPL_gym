@@ -21,6 +21,7 @@ public:
     virtual std::string toString() const=0;
     virtual ~BaseAction();
     virtual BaseAction* copy()=0;
+    virtual void setCustomers(std::vector<Customer*> customers);
 protected:
     void complete();
     void error(std::string errorMsg);
@@ -43,6 +44,7 @@ public:
     OpenTrainer(OpenTrainer&& other);
     OpenTrainer& operator=(OpenTrainer&& other);
     OpenTrainer* copy();
+    void setCustomers(std::vector<Customer*> customers);
 private:
 	const int trainerId;
 	std::vector<Customer *> customers;
@@ -73,7 +75,6 @@ private:
     const int srcTrainer;
     const int dstTrainer;
     const int id;
-    void moveOrdersById(int id, Trainer* sourceTrainer,Trainer* destTrainer);
 };
 
 

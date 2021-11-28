@@ -33,6 +33,8 @@ BaseAction::~BaseAction() {
     status = ActionStatus::COMPLETED;
 }
 
+void BaseAction::setCustomers(std::vector<Customer *> customers) {}
+
 //--------------------OPEN TRAINER------------------------
 
 OpenTrainer::OpenTrainer(int id, std::vector<Customer *> &customersList) : trainerId(id),customers(customersList) {
@@ -41,14 +43,15 @@ OpenTrainer::OpenTrainer(int id, std::vector<Customer *> &customersList) : train
 
 void OpenTrainer::act(Studio &studio) {
     Trainer *trainer = studio.getTrainer(trainerId);
+    unsigned int trainerCapacity = trainer->getCapacity();
     if(!trainer || trainer->isOpen()){
         error("Workout session does not exist or is already open.");
-        for(int i=0;i<customers.size();i++) {
+        for(unsigned int i=0;i<customers.size();i++) {
             delete customers[i];
         }
-    } else if(trainer->getCapacity() >= customers.size()){
+    } else if(trainerCapacity >= customers.size()){
         trainer->openTrainer();
-        for(int i =0;i<customers.size();i++){
+        for(unsigned int i =0;i<customers.size();i++){
             trainer->addCustomer(customers[i]);
         }
         complete();
@@ -60,7 +63,7 @@ void OpenTrainer::act(Studio &studio) {
 
 std::string OpenTrainer::toString() const {
     string toString = "open " + to_string(trainerId)+" ";
-    for(int i=0;i<customers.size();i++){
+    for(unsigned int i=0;i<customers.size();i++){
         toString.append(customers[i]->toString());
     }
     if(getStatus()==0)
@@ -103,9 +106,6 @@ OpenTrainer& OpenTrainer::operator=(OpenTrainer &&other) {
 }
 
 void OpenTrainer::clear() {
-    for(int i =0;i<customers.size();i++){
-        delete customers[i];
-    }
     if(!customers.empty()) {
         customers.clear();
     }
@@ -114,11 +114,15 @@ void OpenTrainer::copy(std::vector<Customer*> customers)  {
     this->customers = std::vector<Customer*>(customers);
 }
 
+void OpenTrainer::setCustomers(std::vector<Customer *> customers) {
+    this->customers=customers;
+}
+
 OpenTrainer *OpenTrainer::copy() {
     vector<Customer*> open_cus;
-    for(int i=0;i<customers.size();i++){
-        open_cus.push_back(customers[i]->copy());
-    }
+//    for(int i=0;i<customers.size();i++){
+//        open_cus.push_back(customers[i]->copy());
+//    }
     OpenTrainer* open = new OpenTrainer(this->trainerId,open_cus);
     if(this->getStatus()==0)
         open->complete();
@@ -141,13 +145,13 @@ void Order::act(Studio &studio) {
         vector<Customer *> customers = trainer->getCustomers();
         vector<Workout> &workout_options = studio.getWorkoutOptions();
         if (trainer->getOrders().empty()) {
-            for (int i = 0; i < customers.size(); i++) {
+            for (unsigned int i = 0; i < customers.size(); i++) {
                 trainer->order(customers[i]->getId(), customers[i]->order(workout_options), workout_options);
 
             }
         }
         vector<OrderPair> orders = trainer->getOrders();
-        for (int i = 0; i < orders.size(); i++) {
+        for (unsigned int i = 0; i < orders.size(); i++) {
             cout << trainer->getCustomer(orders[i].first)->getName() << " Is Doing " << orders[i].second.getName()
                  << endl;
         }
@@ -181,29 +185,33 @@ void MoveCustomer::act(Studio &studio) {
         error("Trainer does not exist or is not open.");
     Trainer* destTrainer = studio.getTrainer(dstTrainer);
     Trainer* sourceTrainer = studio.getTrainer(srcTrainer);
-    if(id>=sourceTrainer->getCustomers().size())
+    if(studio.getTrainer(srcTrainer)->getCustomer(id)== nullptr)
         error("customer does not exist");
-    Customer* customer = sourceTrainer->getCustomer(id);
-    if(!destTrainer || !sourceTrainer || !destTrainer->isOpen() | !sourceTrainer->isOpen()
-        | !sourceTrainer->getCustomer(customer->getId()) | destTrainer->getCapacity() == destTrainer->getCustomers().size()) {
-        error("Cannot move customer");
-    } else{
-        //move customer
-        sourceTrainer->removeCustomer(id);
-        destTrainer->addCustomer(customer);
-        //move orders
-        vector<int> orderIds;
-        for(int i=0;i<sourceTrainer->getOrders().size();i++) {
-            if(sourceTrainer->getOrders()[i].first == id) {
-                OrderPair order(sourceTrainer->getOrders()[i].first,sourceTrainer->getOrders()[i].second);
-                sourceTrainer->getOrders().erase(sourceTrainer->getOrders().begin() + i);
-                orderIds.push_back(order.second.getId());
-                i--;
+    else{
+        unsigned int dstTrainerCapacity = destTrainer->getCapacity();
+        Customer* customer = sourceTrainer->getCustomer(id);
+        if(!destTrainer || !sourceTrainer || !destTrainer->isOpen() | !sourceTrainer->isOpen()
+                                             | !sourceTrainer->getCustomer(customer->getId()) | ( dstTrainerCapacity == destTrainer->getCustomers().size()) ){
+            error("Cannot move customer");
+        } else{
+            //move customer
+            sourceTrainer->removeCustomer(id);
+            destTrainer->addCustomer(customer);
+            //move orders
+            vector<int> orderIds;
+            for(unsigned int i=0;i<sourceTrainer->getOrders().size();i++) {
+                if(sourceTrainer->getOrders()[i].first == id) {
+                    OrderPair order(sourceTrainer->getOrders()[i].first,sourceTrainer->getOrders()[i].second);
+                    sourceTrainer->getOrders().erase(sourceTrainer->getOrders().begin() + i);
+                    orderIds.push_back(order.second.getId());
+                    i--;
+                }
             }
+            destTrainer->order(customer->getId(),orderIds,studio.getWorkoutOptions());
+            complete();
         }
-        destTrainer->order(customer->getId(),orderIds,studio.getWorkoutOptions());
-        complete();
     }
+
     if(sourceTrainer->getCustomers().empty()){
         sourceTrainer->closeTrainer();
     }
@@ -267,7 +275,8 @@ Close *Close::copy() {
 CloseAll::CloseAll() {}
 
 void CloseAll::act(Studio &studio) {
-    for(int i =0;i<studio.getNumOfTrainers();i++) {
+    unsigned int numOfTrainers = studio.getNumOfTrainers();
+    for(unsigned int i =0;i<numOfTrainers;i++) {
         Trainer* trainer = studio.getTrainer(i);
         if(trainer->isOpen()) {
             int salary = trainer->getSalary();
@@ -291,7 +300,7 @@ CloseAll *CloseAll::copy() {
 PrintWorkoutOptions::PrintWorkoutOptions() {}
 
 void PrintWorkoutOptions::act(Studio &studio) {
-    for(int i=0;i<studio.getWorkoutOptions().size();i++){
+    for(unsigned int i=0;i<studio.getWorkoutOptions().size();i++){
         cout<<studio.getWorkoutOptions()[i].getName()<<", "<<studio.getWorkoutOptions()[i].getStringType()<<", "<<studio.getWorkoutOptions()[i].getPrice()<<endl;
     }
     complete();
@@ -325,11 +334,13 @@ void PrintTrainerStatus::act(Studio &studio) {
     else{
         cout<<"Trainer "<<trainerId<<" status: open"<<endl;
         cout<<"Customers: "<<endl;
-        for(int i=0;i<trainer->getCustomers().size();i++){
+        unsigned int trainerCustomersSize = trainer->getCustomers().size();
+        for(unsigned int i=0;i<trainerCustomersSize;i++){
             cout<<trainer->getCustomers()[i]->getId()<<" "<<trainer->getCustomers()[i]->getName()<<endl;
         }
         cout<<"Order: "<<endl;
-        for(int i=0;i<trainer->getOrders().size();i++) {
+        unsigned int trainerOrdersSize = trainer->getOrders().size();
+        for(unsigned int i=0;i<trainerOrdersSize;i++) {
             cout<< trainer->getOrders()[i].second.getName()<<" "<< trainer->getOrders()[i].second.getPrice()<<"NIS "<<trainer->getOrders()[i].first<<endl;
         }
         cout<<"Current trainer salary:  "<<trainer->getSalary()<<"NIS"<<endl;
@@ -358,7 +369,7 @@ PrintTrainerStatus *PrintTrainerStatus::copy() {
 PrintActionsLog::PrintActionsLog() {}
 
 void PrintActionsLog::act(Studio &studio) {
-    for(int i =0;i<studio.getActionsLog().size();i++){
+    for(unsigned int i =0;i<studio.getActionsLog().size();i++){
         cout<<studio.getActionsLog()[i]->toString()<<endl;
     }
     complete();

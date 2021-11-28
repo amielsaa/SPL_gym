@@ -12,7 +12,7 @@ int Customer::getId() const {
     return  id;
 }
 Customer::~Customer(){}
-Customer::Customer(const Customer & other) :id(other.getId()),name(other.getName()) {}
+Customer::Customer(const Customer & other) :name(other.getName()),id(other.getId()) {}
 //Customer* Customer::copy(){}
 
 //Customer &Customer::operator=(const Customer &other) {
@@ -25,14 +25,14 @@ Customer::Customer(const Customer & other) :id(other.getId()),name(other.getName
 SweatyCustomer::SweatyCustomer(std::string name, int id):Customer (name, id) {}
 std::vector<int> SweatyCustomer::order(const std::vector<Workout> &workout_options) {
     std::vector<int> swt_order;
-    for (int i = 0; i < workout_options.size(); ++i) {
+    for (unsigned int i = 0; i < workout_options.size(); ++i) {
         if(workout_options[i].getType()==2)
             swt_order.push_back(workout_options[i].getId());
     }
     return swt_order;
 }
 std::string SweatyCustomer::toString() const {
-    std::string str = getName()+",swt";
+    std::string str = getName()+",swt ";
     return str;
 }
 Customer* SweatyCustomer::copy(){
@@ -49,7 +49,7 @@ std::vector<int> CheapCustomer::order(const std::vector<Workout> &workout_option
     std::vector<int> chp_order;
     int cheapest =workout_options[0].getPrice();
     int workout_id=0;
-    for (int i = 1; i < workout_options.size(); ++i) {
+    for (unsigned int i = 1; i < workout_options.size(); ++i) {
         if(workout_options[i].getPrice()<cheapest)
         {
             workout_id=workout_options[i].getId();
@@ -61,7 +61,7 @@ std::vector<int> CheapCustomer::order(const std::vector<Workout> &workout_option
 }
 std::string CheapCustomer::toString() const
 {
-    std::string str = getName()+" ,chp";
+    std::string str = getName()+",chp ";
     return str;
 }
 Customer* CheapCustomer::copy(){
@@ -86,7 +86,7 @@ std::vector<int> HeavyMuscleCustomer::order(const std::vector<Workout> &workout_
     std::vector<int> mcl_order;
     std::vector<P_copy> partial_copy;
     //initialize partial copy
-    for (int i = 0; i < workout_options.size(); ++i) {
+    for (unsigned int i = 0; i < workout_options.size(); ++i) {
         partial_copy.push_back(P_copy(workout_options[i].getId(),workout_options[i].getPrice(), workout_options[i].getType()));
     }
 
@@ -94,7 +94,7 @@ std::vector<int> HeavyMuscleCustomer::order(const std::vector<Workout> &workout_
         return lhs.wo_price < rhs.wo_price;
     });
     //insert  workout id to int vector
-    for (int i = 0; i < partial_copy.size(); ++i) {
+    for (unsigned int i = 0; i < partial_copy.size(); ++i) {
         if(partial_copy[i].wo_type==0)
             mcl_order.push_back(partial_copy[i].wo_id);
     }
@@ -105,7 +105,7 @@ std::vector<int> HeavyMuscleCustomer::order(const std::vector<Workout> &workout_
 //}
 std::string HeavyMuscleCustomer::toString() const
 {
-    std::string str =getName() +", mcl";
+    std::string str =getName() +",mcl ";
     return str;
 }
 Customer* HeavyMuscleCustomer::copy() {
@@ -123,7 +123,7 @@ std::vector<int> FullBodyCustomer::order(const std::vector<Workout> &workout_opt
     int anaerobic_id=0;
     int m_expensive_mixtype=workout_options[0].getPrice();
     int mixtype_id =0;
-    for (int i = 1; i < workout_options.size(); ++i) {
+    for (unsigned int i = 1; i < workout_options.size(); ++i) {
         if(workout_options[i].getType()==0 && workout_options[i].getPrice()<cheapest_anaerobic){
             cheapest_anaerobic = workout_options[i].getPrice();
             anaerobic_id = workout_options[i].getId();
@@ -143,7 +143,7 @@ std::vector<int> FullBodyCustomer::order(const std::vector<Workout> &workout_opt
     return fbd_order;
 }
 std::string FullBodyCustomer::toString() const {
-    std::string str =  getName()+", fbd ";
+    std::string str =  getName()+",fbd ";
     return str;
 }
 Customer* FullBodyCustomer::copy() {

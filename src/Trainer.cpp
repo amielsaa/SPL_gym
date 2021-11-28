@@ -16,7 +16,7 @@ bool Trainer::isOpen() {
 
 int Trainer::getSalary() {
     int summedSalary = 0;
-    for(int i =0;i<orderList.size();i++){
+    for(unsigned int i =0;i<orderList.size();i++){
         summedSalary += orderList[i].second.getPrice();
     }
     return summedSalary;
@@ -34,7 +34,7 @@ void Trainer::openTrainer() {
 
 void Trainer::order(const int customer_id, const std::vector<int> workout_ids,
                     const std::vector<Workout> &workout_options) {
-    for(int i =0;i<workout_ids.size();i++){
+    for(unsigned int i =0;i<workout_ids.size();i++){
         OrderPair p(customer_id,workout_options[workout_ids[i]]);
         orderList.push_back(p);
     }
@@ -59,7 +59,11 @@ void Trainer::addCustomer(Customer *customer) {
 
 
 Customer* Trainer::getCustomer(int id) {
-    return customersList[getPosById(id)];
+    int position = getPosById(id);
+    if(position==-1)
+        return nullptr;
+    else
+        return customersList[getPosById(id)];
 }
 
 void Trainer::removeCustomer(int id) {
@@ -70,12 +74,14 @@ void Trainer::removeCustomer(int id) {
 int Trainer::getPosById(int id) {
     int ret;
     bool found = false;
-    for(int i=0;i<customersList.size() & !found;i++){
+    for(unsigned int i=0; ( i<customersList.size() ) & !found;i++){
         if(customersList[i]->getId() == id){
             ret = i;
             found = true;
         }
     }
+    if(!found)
+        ret = -1;
     return ret;
 }
 
@@ -122,7 +128,7 @@ Trainer& Trainer::operator=(Trainer &&other) {
 void Trainer::copy(int other_capacity, bool other_open, vector<Customer *> other_customersList, vector<OrderPair> other_orderList) {
 
 
-    for(int i=0;i<other_customersList.size();i++){
+    for(unsigned int i=0;i<other_customersList.size();i++){
         customersList.push_back(other_customersList[i]->copy());
     }
     orderList=vector<OrderPair>(other_orderList);
@@ -131,7 +137,7 @@ void Trainer::copy(int other_capacity, bool other_open, vector<Customer *> other
 }
 
 void Trainer::clear() {
-    for(int i =0;i<customersList.size();i++){
+    for(unsigned int i =0;i<customersList.size();i++){
         delete customersList[i];
     }
     if(!customersList.empty())

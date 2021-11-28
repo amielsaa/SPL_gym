@@ -12,23 +12,17 @@ Studio::Studio(const std::string &configFilePath) {
     customerId=0;
     vector<string> fileContent = parseFile(configFilePath);
 
-    //num of trainers
-    int numOfTrainers = stoi(fileContent[0]);
-
     //trains
     string str = fileContent[1];
-    for(int i=0; i<str.size(); i++){
+    for(unsigned int i=0; i<str.size(); i++){
         if(str[i] != ',') {
-            //cout<<str[i]<<endl;
-
             trainers.push_back(new Trainer(str[i]-'0'));
         }
     }
 
     //workouts
-    for(int i=2;i<fileContent.size();i++) {
+    for(unsigned int i=2;i<fileContent.size();i++) {
         vector<string> workouts = workoutSplitter(fileContent[i]);
-        //<<workouts[0] +" " << getWorkoutTypeByString(workouts[1]) << " " + workouts[2] <<endl;
         workout_options.push_back(Workout(i-2,workouts[0],stoi(workouts[2]), getWorkoutTypeByString(workouts[1])));
     }
 }
@@ -52,7 +46,7 @@ void Studio::inputIteration() {
     //open case
     if(data[0].compare("open")==0) {
         vector<Customer*> customers;
-        for(int i=2;i<data.size()-1;i++) {
+        for(unsigned int i=2;i<data.size()-1;i++) {
             customers.push_back(createCustomerByType(data[i], data[i + 1]));
             i++;
         }
@@ -178,7 +172,7 @@ Customer *Studio::createCustomerByType(std::string name, std::string type) {
 std::vector<std::string> Studio::inputSplitter(std::string inputString) {
     vector<string> ret;
     string temp;
-    for(int i =0;i<inputString.size();i++){
+    for(unsigned int i =0;i<inputString.size();i++){
         if(inputString[i]!=',' && inputString[i] != ' '){
             temp+=inputString[i];
         } else if(i<inputString.size()-1 && inputString[i+1] != ' ' && inputString[i+1] != ',') {
@@ -204,7 +198,7 @@ WorkoutType Studio::getWorkoutTypeByString(string workoutString) {
 vector<string> Studio::workoutSplitter(string workoutContent) {
     vector<string> ret;
     string temp;
-    for(int i=0; i<workoutContent.size(); i++){
+    for(unsigned int i=0; i<workoutContent.size(); i++){
         if(workoutContent[i] != ','){
             temp+=workoutContent[i];
             if(i==workoutContent.size()-1)
@@ -213,7 +207,7 @@ vector<string> Studio::workoutSplitter(string workoutContent) {
         else{
             ret.push_back(temp);
             temp="";
-            while(i<workoutContent.size() && (workoutContent[i] == ',' | workoutContent[i] == ' ') ){
+            while( ( i<workoutContent.size() ) && ( ( workoutContent[i] == ',' ) | ( workoutContent[i] == ' ' ) ) ){
                 i++;
             }
             i--;
@@ -229,7 +223,7 @@ vector<string> Studio::parseFile(const string& conf) {
     vector<string> fileContent;
     while(inFile) {
         getline(inFile, strOneLine);
-        if(strOneLine[0] != '#' & strOneLine.length()!=0){
+        if( ( strOneLine[0] != '#'  ) &  ( strOneLine.length()!=0 ) ){
             fileContent.push_back(strOneLine);
         }
     }
@@ -273,10 +267,10 @@ Studio &Studio::operator=(Studio &&other) {
 }
 
 void Studio::clear() {
-    for(int i=0;i<trainers.size();i++){
+    for(unsigned int i=0;i<trainers.size();i++){
         delete trainers[i];
     }
-    for(int i=0;i<actionsLog.size();i++){
+    for(unsigned int i=0;i<actionsLog.size();i++){
         delete actionsLog[i];
     }
     if(!trainers.empty())
@@ -292,12 +286,17 @@ void Studio::clear() {
 void Studio::copy(bool other_open, std::vector<Trainer *> other_trainers, std::vector<Workout> other_workout_options,
                   std::vector<BaseAction *> other_actionsLog, int other_customerId) {
     open = other_open;
-    for (int i = 0; i < other_trainers.size(); ++i) {
+    for (unsigned int i = 0; i < other_trainers.size(); ++i) {
         Trainer* train = new Trainer(*other_trainers[i]);
         trainers.push_back(train);
     }
-    for (int i = 0; i < other_actionsLog.size(); ++i) {
-        actionsLog.push_back(other_actionsLog[i]->copy());
+    for (unsigned int i = 0; i < other_actionsLog.size(); ++i) {
+        vector<string> inp = inputSplitter(other_actionsLog[i]->toString());
+        BaseAction* act = other_actionsLog[i]->copy();
+        if(inp[0].compare("open")==0){
+            act->setCustomers(trainers[stoi(inp[1])]->getCustomers());
+        }
+        actionsLog.push_back(act);
     }
 
     workout_options = other_workout_options;
